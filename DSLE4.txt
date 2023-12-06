@@ -25,12 +25,13 @@ def display_top_scores(arr, n=5):
 
 percentages=[]
 for i in range(5):
-    percentage=int(input("enter percentage of students"))
+    percentage=float(input("enter percentage of students"))
     i+=1
     percentages.append(percentage)
         
 flag=1
-while flag:
+while flag==1:
+    print("<------Menu------>\n1.Bubble Sort\n2.Selection Sort\n3.Top 5 Scores")
     ch=int(input("enter a no from 1 to 3:"))
     if(ch==1):
         print("before sorting",percentages)
@@ -50,3 +51,4 @@ while flag:
         print(display_top_scores(percentages, n=5))
     else:
         flag=0
+
