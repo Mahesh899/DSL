@@ -1,8 +1,4 @@
-def input_percentage():
-    perc = []
-    number_of_students = int(input("Enter the number of Students : "))
-    for i in range(number_of_students):
-      perc.append(float(input("Enter the percentage of Student {0} : ".format(i+1))))
+
 def input_percentage():
     perc = []
     number_of_students = int(input("Enter the number of Students : "))
@@ -12,22 +8,21 @@ def input_percentage():
 def print_percentage(perc):
      for i in range(len(perc)):
       print(perc[i],sep = "\n")
-def percentage_partition(perc,start,end):
+def percentage_partition(perc, start, end):
     pivot = perc[start]
-    lower_bound = start + 1
-    upper_bound = end
-    while True:
-        while lower_bound <= upper_bound and perc[lower_bound] <= pivot:
-            lower_bound += 1
-        while lower_bound <= upper_bound and perc[upper_bound] >= pivot:
-            upper_bound -= 1
-        if lower_bound <= upper_bound:
-            perc[lower_bound],perc[upper_bound] = perc[upper_bound],perc[lower_bound]
+    low, high = start + 1, end
 
-        else:
-            break
-    perc[start],perc[upper_bound] = perc[upper_bound],perc[start]
-    return upper_bound
+    while low <= high:
+        while low <= high and perc[low] <= pivot:
+            low += 1
+        while low <= high and perc[high] >= pivot:
+            high -= 1
+        if low <= high:
+            perc[low], perc[high] = perc[high], perc[low]
+
+    perc[start], perc[high] = perc[high], perc[start]
+    return high
+
 def Quick_Sort(perc,start,end):
     while start < end:
         partition = percentage_partition(perc,start,end)
